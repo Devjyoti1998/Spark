@@ -11,5 +11,5 @@ schema = StructType([ \
 customer = spark.read.schema(schema).csv("file:///SparkCourse/Section2/customer-orders.csv")
 
 
-customer.groupBy("cust_id").agg(func.round(func.sum("amt_spent"),2).alias("total")).orderBy("total").show()
+customer.groupBy("cust_id").agg(func.round(func.sum("amt_spent"),2).alias("total")).orderBy("total").show(customer.count())
 spark.stop()
